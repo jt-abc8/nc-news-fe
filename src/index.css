@@ -27,3 +27,44 @@
 .nav-link {
     text-align: center;
 }
+
+.display-block > button {
+    padding: 16px;
+}
+
+.article-card {
+    border: 1px solid black;
+    display: flex;
+    height: 128px;
+    flex: 1;
+}
+
+.article-card:hover {
+    scale: 110%;
+}
+
+.card-img {
+    height: 100%;
+    width: 128px;
+    display: flex;
+
+    img {
+        width: 128px;
+    }
+}
+
+.card-text {
+    height: 100%;
+    flex: 1;
+    padding-top: 16px;
+    padding-left: 8px;
+
+    div {
+        display: inline-flex;
+
+        p {
+            padding-right: 16px;
+            font-size:small;
+        }
+    }
+}
