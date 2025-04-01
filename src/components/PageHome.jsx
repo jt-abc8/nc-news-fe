@@ -1,13 +1,11 @@
-import DisplayBlock from "./DisplayBlock";
-
 function PageHome() {
-    return (
-        <main id="home">
-            <h2>Welcome user!</h2>
-            <DisplayBlock/>
-            <DisplayBlock/>
-        </main>
-    )
+   return (
+      <main id="home">
+         <h2>Welcome user!</h2>
+         <p>display block - articles</p>
+         <p>display block - topics</p>
+      </main>
+   );
 }
 
 export default PageHome;

@@ -1,3 +1,4 @@
+import { getArticles } from "../api";
 import DisplayBlock from "./DisplayBlock";
 import Sortbar from "./Sortbar";
 
@@ -6,7 +7,7 @@ function PageArticles() {
         <main id="articles">
             <h2>Articles</h2>
             <Sortbar/>
-            <DisplayBlock/>
+            <DisplayBlock apiRequest={getArticles}/>
         </main>
     )
 }

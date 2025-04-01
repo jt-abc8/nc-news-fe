@@ -4,7 +4,7 @@ function PageTopics() {
     return (
         <main id="topics">
             <h2>Topics</h2>
-            <DisplayBlock/>
+            <p>display block</p>
         </main>
     )
 }
