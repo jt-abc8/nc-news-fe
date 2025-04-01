@@ -14,3 +14,7 @@ export const getArticles = (p, limit) => {
       })
       .then(({ data }) => data);
 };
+
+export const getArticleById = (article_id) => {
+   return api.get(`/articles/${article_id}`).then(({ data }) => data);
+};

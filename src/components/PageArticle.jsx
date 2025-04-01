@@ -1,7 +1,9 @@
+import Article from "./Article";
+
 function PageArticle() {
     return (
-        <main>
-
+        <main id="article-page">
+            <Article/>
         </main>
     )
 }
