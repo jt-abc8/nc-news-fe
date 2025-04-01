@@ -2,6 +2,7 @@ import { useParams } from "react-router";
 import { getArticleById } from "../api";
 import { getDate, pageDisplay } from "../utils";
 import { useDatafetch } from "../custom-hooks";
+import Comments from "./Comments";
 
 function Article() {
    const { article_id } = useParams();
@@ -27,6 +28,7 @@ function Article() {
       const { dd, mm, yyyy } = getDate(created_at);
 
       return (
+        <>
          <section id="article">
             <img src={article_img_url} alt="" />
             <div>
@@ -36,11 +38,15 @@ function Article() {
                <p>
                   {dd} {mm} {yyyy}
                </p>
+               <p>{comment_count} comments</p>
                <p>{votes} votes</p>
                <br/>
                <p>{body}</p>
             </div>
          </section>
+         <br/>
+         <Comments article_id={article_id} />
+        </>
       );
    };
 

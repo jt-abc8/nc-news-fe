@@ -1,4 +1,5 @@
 import CardArticle from "./components/CardArticle";
+import CardComment from "./components/CardComment";
 
 export const getDate = (created_at) => {
    const date = new Date(created_at);
@@ -23,15 +24,31 @@ export const getDate = (created_at) => {
    };
 };
 
+export const getTime = (created_at) => {
+   const date = new Date(created_at);
+   let hh = date.getHours();
+   let mm = date.getMinutes();
+   if (hh < 10) hh = `0${hh}`;
+   if (mm < 10) mm = `0${mm}`;
+   return `${hh}:${mm}`;
+}
+
 export const pageDisplay = (html, isLoading, isError) => {
    if (isLoading) return <p>Loading...</p>;
    if (isError) return <p>Something went wrong...</p>;
    return html;
 };
 
-export const returnArticleCards = ({ articles }) => {
+export const articleCards = ({ articles }) => {
    return articles.map((data) => {
       const { article_id } = data;
       return <CardArticle key={article_id} data={data} />;
    });
 };
+
+export const commentCards = ({comments}) => {
+   return comments.map((data) => {
+      const {comment_id } = data;
+      return <CardComment key={comment_id} data={data}/>
+   })
+}

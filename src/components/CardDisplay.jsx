@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDatafetch } from "../custom-hooks";
-import { pageDisplay, returnArticleCards } from "../utils";
+import { pageDisplay, articleCards, commentCards } from "../utils";
 
 function CardDisplay({ apiRequest }) {
    const [page, setPage] = useState(1);
@@ -15,8 +15,9 @@ function CardDisplay({ apiRequest }) {
       setPage(newPage);
    };
 
-   const articleCards = () => {
-      if (data.articles) return returnArticleCards(data);
+   const cardArray = () => {
+      if (data.articles) return articleCards(data);
+      if (data.comments) return commentCards(data);
    };
 
    const navButton = (text, value, condition) => {
@@ -27,7 +28,7 @@ function CardDisplay({ apiRequest }) {
 
    const html = (
       <div className="display-block">
-         {articleCards()}
+         {cardArray()}
          {navButton("Previous page", -1, page > 1)}
          {navButton("Next Page", 1, page < totalPages)}
       </div>
