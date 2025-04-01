@@ -1,6 +1,6 @@
 function PageHome() {
    return (
-      <main id="home">
+      <main id="home-page">
          <h2>Welcome user!</h2>
          <p>display block - articles</p>
          <p>display block - topics</p>

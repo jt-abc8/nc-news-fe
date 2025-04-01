@@ -1,8 +1,8 @@
-import DisplayBlock from "./DisplayBlock";
+import DisplayBlock from "./CardDisplay";
 
 function PageTopics() {
     return (
-        <main id="topics">
+        <main id="topics-page">
             <h2>Topics</h2>
             <p>display block</p>
         </main>
