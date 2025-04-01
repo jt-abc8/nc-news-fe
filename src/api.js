@@ -18,3 +18,7 @@ export const getArticles = (p, limit) => {
 export const getArticleById = (article_id) => {
    return api.get(`/articles/${article_id}`).then(({ data }) => data);
 };
+
+export const getCommentsByArticleId = (article_id) => {
+   return api.get(`/articles/${article_id}/comments`).then(({ data }) => data);
+};
