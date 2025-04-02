@@ -3,6 +3,7 @@ import { getArticleById } from "../api";
 import { getDate, pageDisplay } from "../utils";
 import { useDatafetch } from "../custom-hooks";
 import Comments from "./Comments";
+import VoteCounter from "./VoteCounter";
 
 function Article() {
    const { article_id } = useParams();
@@ -11,24 +12,23 @@ function Article() {
       isLoading,
       isError,
    } = useDatafetch(getArticleById, article_id);
+   if (!article) return pageDisplay(null, isLoading, isError);
 
-   const html = () => {
-      if (!article) return;
+   const {
+      article_img_url,
+      author,
+      body,
+      comment_count,
+      created_at,
+      title,
+      topic,
+      votes,
+   } = article;
 
-      const {
-         article_img_url,
-         author,
-         body,
-         comment_count,
-         created_at,
-         title,
-         topic,
-         votes,
-      } = article;
-      const { dd, mm, yyyy } = getDate(created_at);
+   const { dd, mm, yyyy } = getDate(created_at);
 
-      return (
-        <>
+   const html = (
+      <>
          <section id="article">
             <img src={article_img_url} alt="" />
             <div>
@@ -39,18 +39,18 @@ function Article() {
                   {dd} {mm} {yyyy}
                </p>
                <p>{comment_count} comments</p>
-               <p>{votes} votes</p>
-               <br/>
+               <VoteCounter votes={votes} id={article_id} />
+
+               <br />
                <p>{body}</p>
             </div>
          </section>
-         <br/>
+         <br />
          <Comments article_id={article_id} />
-        </>
-      );
-   };
+      </>
+   );
 
-   return pageDisplay(html(), isLoading, isError);
+   return pageDisplay(html, isLoading, isError);
 }
 
 export default Article;

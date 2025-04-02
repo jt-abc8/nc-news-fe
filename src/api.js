@@ -22,3 +22,7 @@ export const getArticleById = (article_id) => {
 export const getCommentsByArticleId = (article_id) => {
    return api.get(`/articles/${article_id}/comments`).then(({ data }) => data);
 };
+
+export const updateVotes = (table, id, votes) => {
+   return api.patch(`/${table}/${id}`, { inc_votes: votes });
+};
