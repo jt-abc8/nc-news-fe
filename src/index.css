@@ -60,6 +60,9 @@
    padding: 16px 8px 0 8px;
 
    div {
+      h5 {
+         padding-right: 16px;
+      }
       display: inline-flex;
 
       p {
@@ -171,5 +174,22 @@
 .comment-deleted {
    display: flex;
    height: 64px;
+   text-align: center;
+}
+
+#sort-bar {
+   display: flex;
+   .sort-category {
+      display: flex;
+      flex-direction: column;
+      padding-bottom: 8px;
+   }
+}
+
+h1 {
+   padding-left: 8px;
+}
+
+h2 {
    text-align: center;
 }

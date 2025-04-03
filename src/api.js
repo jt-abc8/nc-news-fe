@@ -4,13 +4,15 @@ const api = axios.create({
    baseURL: "https://nc-news-i5we.onrender.com/api",
 });
 
-export const getArticles = (p, limit, topic) => {
+export const getArticles = (p, limit, topic, sort_by, order) => {
    return api
       .get("/articles", {
          params: {
             p,
             limit,
-            topic
+            topic,
+            sort_by,
+            order
          },
       })
       .then(({ data }) => data);
