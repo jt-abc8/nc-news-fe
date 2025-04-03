@@ -1,4 +1,4 @@
-import { articleCards, commentCards } from "../utils";
+import { articleCards, commentCards, topicCards } from "../utils";
 import { useState, useEffect } from "react";
 
 function CardDisplay({ data, setData, page, setPage, limit}) {
@@ -18,6 +18,7 @@ function CardDisplay({ data, setData, page, setPage, limit}) {
    const cards = () => {
       if (data.articles) return articleCards(data);
       if (data.comments) return commentCards(data, setData);
+      if (data.topics) return topicCards(data);
    };
 
    const navButton = (text, value, condition) => {
