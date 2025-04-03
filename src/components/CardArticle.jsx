@@ -14,7 +14,7 @@ function CardArticle({ data }) {
    const { dd, mm, yyyy } = getDate(created_at);
    
    return (
-      <Link to={`/article/${article_id}`}>
+      <Link to={`/articles/${article_id}`}>
          <section className="article-card">
             <div className="card-img">
                <img src={article_img_url} alt="" />

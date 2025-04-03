@@ -15,14 +15,25 @@ export const getArticles = (p, limit) => {
       .then(({ data }) => data);
 };
 
-export const getArticleById = (article_id) => {
+export const getArticle = (article_id) => {
    return api.get(`/articles/${article_id}`).then(({ data }) => data);
 };
 
-export const getCommentsByArticleId = (article_id) => {
+export const getComments = (article_id) => {
    return api.get(`/articles/${article_id}/comments`).then(({ data }) => data);
 };
 
-export const updateVotes = (table, id, votes) => {
-   return api.patch(`/${table}/${id}`, { inc_votes: votes });
+export const patchVotes = (table, id, inc_votes) => {
+   return api.patch(`/${table}/${id}`, { inc_votes });
+};
+
+export const getUser = (username) => {
+   return api.get(`/users/${username}`).then(({ data }) => data);
+};
+
+export const postComment = (article_id, username, body) => {
+   console.log(article_id, username, body);
+   return api
+      .post(`/articles/${article_id}/comments`, { username, body })
+      .then(({ data }) => data);
 };

@@ -1,23 +1,23 @@
-import { useEffect, useState } from "react";
-import { useDatafetch } from "../custom-hooks";
-import { pageDisplay, articleCards, commentCards } from "../utils";
+import { articleCards, commentCards } from "../utils";
+import { useState, useEffect } from "react";
 
-function CardDisplay({ apiRequest }) {
-   const [page, setPage] = useState(1);
-   const [limit, setLimit] = useState(10);
-   const [totalPages, setTotalPages] = useState(null);
-   const { data, isLoading, isError } = useDatafetch(apiRequest, page, limit);
+function CardDisplay({ data, setData, page, setPage, limit}) {
+   const [totalPages, setTotalPages] = useState(0);
+   const [cardArray, setCardArray] = useState([]);
 
-   useEffect(() => setTotalPages(Math.ceil(data.total_count / limit)), [data]);
+   useEffect(() => {
+      setTotalPages(Math.ceil(data.total_count / limit));
+      setCardArray(cards());
+   }, [data]);
 
    const updatePage = (num) => {
       const newPage = page + num;
       setPage(newPage);
    };
 
-   const cardArray = () => {
+   const cards = () => {
       if (data.articles) return articleCards(data);
-      if (data.comments) return commentCards(data);
+      if (data.comments) return commentCards(data, setData);
    };
 
    const navButton = (text, value, condition) => {
@@ -26,15 +26,13 @@ function CardDisplay({ apiRequest }) {
       }
    };
 
-   const html = (
+return (
       <div className="display-block">
-         {cardArray()}
+         {cardArray}
          {navButton("Previous page", -1, page > 1)}
          {navButton("Next Page", 1, page < totalPages)}
       </div>
    );
-
-   return pageDisplay(html, isLoading, isError);
 }
 
 export default CardDisplay;
