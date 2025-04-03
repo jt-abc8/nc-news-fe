@@ -14,7 +14,7 @@ function PageArticles() {
 
    const [page, setPage] = useState(1);
    const [limit, setLimit] = useState(10);
-   const { data, setData, isLoading, isError } = useDataFetch(
+   const { data, setData, isLoading, error } = useDataFetch(
       getArticles,
       page,
       limit,
@@ -37,7 +37,7 @@ function PageArticles() {
       <main id="articles-page">
          <h2>Articles{topic ? ` - #${topic}` : null}</h2>
          <Sortbar />
-         {pageDisplay(articleList, isLoading, isError)}
+         {pageDisplay(articleList, isLoading, error)}
       </main>
    );
 }

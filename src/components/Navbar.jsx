@@ -2,7 +2,7 @@ import { Link } from "react-router";
 import { simulateLogin } from "../utils";
 
 function Navbar() {
-   const {username, name, avatar} = simulateLogin();
+   const {username} = simulateLogin();
    
    return (
       <nav id="navbar" className="dev-border">

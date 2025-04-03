@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { simulateLogin } from "../utils";
 import { getComments, postComment } from "../api";
 
@@ -8,24 +8,46 @@ function CommentForm({ setData, article_id }) {
    const [isLoading, setIsLoading] = useState(false);
    const [isError, setIsError] = useState(false);
    const [isSubmitted, setisSubmitted] = useState(false);
+   const [msg, setMsg] = useState(null);
    const [msgTimer, setMsgTimer] = useState(false);
+
+   useEffect(() => {
+      const newMsg = () => {
+         if (isSubmitted) return "Comment submitted!";
+         if (isError)
+            return "Something went wrong. Check your input is valid and try again.";
+      };
+      setMsg(newMsg());
+   }, [msgTimer]);
 
    const handleInput = (event) => {
       setInput(event.target.value);
+   };
+
+   const messageTimer = () => {
+      setMsgTimer(true);
+      setTimeout(() => {
+         setMsgTimer(false);
+      }, 6000);
    };
 
    const handleSubmit = (event) => {
       event.preventDefault();
       setIsLoading(true);
       setIsError(false);
+
+      if (!/\w/g.test(input)) {
+         setIsLoading(false);
+         setIsError(true);
+         messageTimer();
+         return;
+      }
+
       postComment(article_id, username, input)
          .then(() => {
             setInput("");
             setisSubmitted(true);
-            setMsgTimer(true);
-            setTimeout(() => {
-               setMsgTimer(false);
-            }, 6000)
+            messageTimer();
             return getComments(article_id);
          })
          .then((data) => setData(data))
@@ -41,11 +63,6 @@ function CommentForm({ setData, article_id }) {
    if (isLoading) {
       return <p>Submitting...</p>;
    }
-
-   const submitState = () => {
-      if (isSubmitted) return "Comment submitted!";
-      if (isError) return "Something went wrong...";
-   };
 
    return (
       <>
@@ -69,7 +86,7 @@ function CommentForm({ setData, article_id }) {
             <p id="comment-char-count">{input.length}/250</p>
             <button>Submit</button>
          </form>
-         <p id="comment-submit-msg">{msgTimer ? submitState() : null}</p>
+         <p id="comment-submit-msg">{msgTimer ? msg : null}</p>
       </>
    );
 }

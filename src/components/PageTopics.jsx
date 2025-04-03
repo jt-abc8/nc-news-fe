@@ -4,7 +4,7 @@ import { pageDisplay } from "../utils";
 import CardDisplay from "./CardDisplay";
 
 function PageTopics() {
-    const {data : {topics}, isLoading, isError} = useDataFetch(getTopics);
+    const {data : {topics}, isLoading, error} = useDataFetch(getTopics);
 
     const html = (
         <main id="topics-page">
@@ -13,7 +13,7 @@ function PageTopics() {
         </main>
     )
 
-    return pageDisplay(html, isLoading, isError);
+    return pageDisplay(html, isLoading, error);
 }
 
 export default PageTopics;
