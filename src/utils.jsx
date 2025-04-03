@@ -1,5 +1,6 @@
 import CardArticle from "./components/CardArticle";
 import CardComment from "./components/CardComment";
+import { CardTopic } from "./components/CardTopic";
 import { UserContext } from "./contexts/User";
 import { useContext } from "react";
 
@@ -59,3 +60,10 @@ export const commentCards = ({ comments }, setData) => {
       return <CardComment key={comment_id} commentData={data} setCommentArray={setData} />;
    });
 };
+
+export const topicCards = ({topics}) => {
+   return topics.map((topic) => {
+      const {slug} = topic;
+      return <CardTopic key={slug} topic={topic}/>
+   })
+}

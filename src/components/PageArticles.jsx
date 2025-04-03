@@ -4,14 +4,19 @@ import CardDisplay from "./CardDisplay";
 import Sortbar from "./Sortbar";
 import { useDataFetch } from "../custom-hooks";
 import { pageDisplay } from "../utils";
+import { useParams, useSearchParams } from "react-router";
 
 function PageArticles() {
+   const [params] = useSearchParams();
+   const topic = params.get("topic");
+
    const [page, setPage] = useState(1);
    const [limit, setLimit] = useState(10);
    const { data, setData, isLoading, isError } = useDataFetch(
       getArticles,
       page,
-      limit
+      limit,
+      topic
    );
 
    const articleList = (
@@ -26,7 +31,7 @@ function PageArticles() {
 
    return (
       <main id="articles-page">
-         <h2>Articles</h2>
+         <h2>Articles{topic ? ` - #${topic}` : null}</h2>
          <Sortbar />
          {pageDisplay(articleList, isLoading, isError)}
       </main>

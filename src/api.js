@@ -4,12 +4,13 @@ const api = axios.create({
    baseURL: "https://nc-news-i5we.onrender.com/api",
 });
 
-export const getArticles = (p, limit) => {
+export const getArticles = (p, limit, topic) => {
    return api
       .get("/articles", {
          params: {
             p,
             limit,
+            topic
          },
       })
       .then(({ data }) => data);
@@ -39,4 +40,8 @@ export const postComment = (article_id, username, body) => {
 
 export const deleteComment = (comment_id) => {
    return api.delete(`/comments/${comment_id}`);
-}
+};
+
+export const getTopics = () => {
+   return api.get("/topics").then(({ data }) => data);
+};
