@@ -9,6 +9,8 @@ import { useParams, useSearchParams } from "react-router";
 function PageArticles() {
    const [params] = useSearchParams();
    const topic = params.get("topic");
+   const sort = params.get("sort_by");
+   const order = params.get("order")
 
    const [page, setPage] = useState(1);
    const [limit, setLimit] = useState(10);
@@ -16,7 +18,9 @@ function PageArticles() {
       getArticles,
       page,
       limit,
-      topic
+      topic,
+      sort,
+      order
    );
 
    const articleList = (
