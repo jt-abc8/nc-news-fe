@@ -163,3 +163,13 @@
    text-align: center;
    padding-top: 8px;
 }
+
+.comment-delete-btn {
+   padding: 8px;
+}
+
+.comment-deleted {
+   display: flex;
+   height: 64px;
+   text-align: center;
+}

@@ -53,9 +53,9 @@ export const articleCards = ({ articles }) => {
    });
 };
 
-export const commentCards = ({ comments }) => {
+export const commentCards = ({ comments }, setData) => {
    return comments.map((data) => {
       const { comment_id } = data;
-      return <CardComment key={comment_id} data={data} />;
+      return <CardComment key={comment_id} commentData={data} setCommentArray={setData} />;
    });
 };
