@@ -193,3 +193,17 @@ h1 {
 h2 {
    text-align: center;
 }
+
+#page-error {
+   padding-top: 64px;
+   display: flex;
+   flex-direction: column;
+   width: 90vw;
+
+   a {
+      padding: 16px;
+      font-size: larger;
+      font-weight: bold;
+      border: 1px solid black;
+   }
+}

@@ -1,6 +1,8 @@
 import CardArticle from "./components/CardArticle";
 import CardComment from "./components/CardComment";
 import { CardTopic } from "./components/CardTopic";
+import PageError from "./components/PageError";
+import PageLoading from "./components/PageLoading";
 import { UserContext } from "./contexts/User";
 import { useContext } from "react";
 
@@ -41,9 +43,9 @@ export const getTime = (created_at) => {
    return `${hh}:${mm}`;
 };
 
-export const pageDisplay = (html, isLoading, isError) => {
-   if (isLoading) return <p>Loading...</p>;
-   if (isError) return <p>Something went wrong...</p>;
+export const pageDisplay = (html, isLoading, error) => {
+   if (isLoading) return <PageLoading/>;
+   if (error) return <PageError status={error.status}/>
    return html;
 };
 

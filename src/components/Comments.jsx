@@ -8,7 +8,7 @@ import { pageDisplay } from "../utils";
 function Comments({ article_id }) {
    const [page, setPage] = useState(1);
    const [limit, setLimit] = useState(10);
-   const { data, setData, isLoading, isError } = useDataFetch(
+   const { data, setData, isLoading, error } = useDataFetch(
       getComments,
       article_id
    );
@@ -27,7 +27,7 @@ function Comments({ article_id }) {
       <section id="comment-section">
          <CommentForm setData={setData} article_id={article_id} />
          <h3>{data.comments ? data.comments.length : 0} comments</h3>
-         {pageDisplay(commentDisplay, isLoading, isError)}
+         {pageDisplay(commentDisplay, isLoading, error)}
       </section>
    );
 }

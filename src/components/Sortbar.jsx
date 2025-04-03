@@ -14,7 +14,7 @@ function Sortbar() {
    const {
       data: { topics },
       isLoading,
-      isError,
+      error,
    } = useDataFetch(getTopics);
 
    useEffect(() => {
@@ -23,8 +23,6 @@ function Sortbar() {
       const topicQuery = topic !== "all" ? `&topic=${topic}` : "";
       navigate(`/articles?${sortQuery}${orderQuery}${topicQuery}`);
    }, [topic, sort, order]);
-
-   if (!topics) return pageDisplay(null, isLoading, isError);
 
    const topicFilter = () => {
       const options = topics.map(({ slug }) => {
@@ -102,13 +100,15 @@ function Sortbar() {
       </div>
    );
 
-   return (
+   const html = () => (
       <section id="sort-bar">
          {topicFilter()}
          {sortBy}
          {orderBy}
       </section>
    );
+
+   return pageDisplay(topics ? html() : null, isLoading, error);
 }
 
 export default Sortbar;

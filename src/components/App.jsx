@@ -4,6 +4,7 @@ import PageHome from "./PageHome";
 import PageArticle from "./PageArticle";
 import PageArticles from "./PageArticles";
 import PageTopics from "./PageTopics";
+import PageError from "./PageError";
 
 function App() {
    return (
@@ -15,6 +16,8 @@ function App() {
             <Route path="/articles" element={<PageArticles />} />
             <Route path="/articles/:article_id" element={<PageArticle/>}/>
             <Route path="/topics" element={<PageTopics />} />
+            
+            <Route path="/*" element={<PageError status={404}/>}/>
          </Routes>
       </>
    );
