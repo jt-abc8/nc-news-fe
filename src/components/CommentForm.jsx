@@ -8,6 +8,7 @@ function CommentForm({ setData, article_id }) {
    const [isLoading, setIsLoading] = useState(false);
    const [isError, setIsError] = useState(false);
    const [isSubmitted, setisSubmitted] = useState(false);
+   const [msgTimer, setMsgTimer] = useState(false);
 
    const handleInput = (event) => {
       setInput(event.target.value);
@@ -21,10 +22,13 @@ function CommentForm({ setData, article_id }) {
          .then(() => {
             setInput("");
             setisSubmitted(true);
-            getComments(article_id).then((data) => {
-               setData(data);
-            });
+            setMsgTimer(true);
+            setTimeout(() => {
+               setMsgTimer(false);
+            }, 6000)
+            return getComments(article_id);
          })
+         .then((data) => setData(data))
          .catch((err) => {
             setIsError(true);
             setisSubmitted(false);
@@ -65,7 +69,7 @@ function CommentForm({ setData, article_id }) {
             <p id="comment-char-count">{input.length}/250</p>
             <button>Submit</button>
          </form>
-         <p id="comment-submit-msg">{submitState()}</p>
+         <p id="comment-submit-msg">{msgTimer ? submitState() : null}</p>
       </>
    );
 }

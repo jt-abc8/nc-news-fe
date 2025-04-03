@@ -4,7 +4,6 @@ import { getDate, pageDisplay } from "../utils";
 import { useDataFetch } from "../custom-hooks";
 import Comments from "./Comments";
 import VoteCounter from "./VoteCounter";
-import { useEffect, useState } from "react";
 
 function Article() {
    const { article_id } = useParams();
@@ -20,7 +19,6 @@ function Article() {
       article_img_url,
       author,
       body,
-      comment_count,
       created_at,
       title,
       topic,
@@ -47,7 +45,7 @@ function Article() {
             </div>
          </section>
          <br />
-         <Comments article_id={article_id} comment_count={comment_count} />
+         <Comments article_id={article_id} />
       </>
    );
 

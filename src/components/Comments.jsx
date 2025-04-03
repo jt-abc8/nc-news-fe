@@ -5,7 +5,7 @@ import { useState } from "react";
 import { useDataFetch } from "../custom-hooks";
 import { pageDisplay } from "../utils";
 
-function Comments({ article_id, comment_count }) {
+function Comments({ article_id }) {
    const [page, setPage] = useState(1);
    const [limit, setLimit] = useState(10);
    const { data, setData, isLoading, isError } = useDataFetch(
