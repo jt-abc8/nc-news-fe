@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export const useDatafetch = (apiRequest, ...args) => {
+export const useDataFetch = (apiRequest, ...args) => {
    const [data, setData] = useState({});
    const [isLoading, setIsLoading] = useState(false);
    const [isError, setIsError] = useState(false);
@@ -14,5 +14,5 @@ export const useDatafetch = (apiRequest, ...args) => {
          .finally(() => setIsLoading(false));
    }, [...args]);
 
-   return {data, isLoading, isError};
+   return {data, setData, isLoading, isError};
 };

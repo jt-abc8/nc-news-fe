@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { updateVotes } from "../api";
+import { patchVotes } from "../api";
 
 function VoteCounter({ votes, id }) {
    const [voteCount, setVoteCount] = useState(votes);
@@ -9,7 +9,7 @@ function VoteCounter({ votes, id }) {
       const newVotes = voteCount + value;
       setVoteCount(newVotes);
       setError(false);
-      updateVotes("articles", id, value).catch((err) => {
+      patchVotes("articles", id, value).catch((err) => {
          const undoVotes = voteCount;
          setVoteCount(undoVotes);
          setError(true);

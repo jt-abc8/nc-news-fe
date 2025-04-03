@@ -1,11 +1,33 @@
-import { getCommentsByArticleId } from "../api";
+import { getComments } from "../api";
 import CardDisplay from "./CardDisplay";
+import CommentForm from "./CommentForm";
+import { useState } from "react";
+import { useDataFetch } from "../custom-hooks";
+import { pageDisplay } from "../utils";
 
-function Comments({article_id}) {
+function Comments({ article_id, comment_count }) {
+   const [page, setPage] = useState(1);
+   const [limit, setLimit] = useState(10);
+   const { data, setData, isLoading, isError } = useDataFetch(
+      getComments,
+      article_id
+   );
+
+   const commentDisplay = (
+      <CardDisplay
+         data={data}
+         setData={setData}
+         page={page}
+         setPage={setPage}
+         limit={limit}
+      />
+   );
+
    return (
       <section id="comment-section">
-         <div>user comment form</div>
-         <CardDisplay apiRequest={getCommentsByArticleId}/>
+         <CommentForm setData={setData} article_id={article_id} />
+         <h3>{data.comments ? data.comments.length : 0} comments</h3>
+         {pageDisplay(commentDisplay, isLoading, isError)}
       </section>
    );
 }

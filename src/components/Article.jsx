@@ -1,9 +1,10 @@
 import { useParams } from "react-router";
-import { getArticleById } from "../api";
+import { getArticle } from "../api";
 import { getDate, pageDisplay } from "../utils";
-import { useDatafetch } from "../custom-hooks";
+import { useDataFetch } from "../custom-hooks";
 import Comments from "./Comments";
 import VoteCounter from "./VoteCounter";
+import { useEffect, useState } from "react";
 
 function Article() {
    const { article_id } = useParams();
@@ -11,7 +12,8 @@ function Article() {
       data: { article },
       isLoading,
       isError,
-   } = useDatafetch(getArticleById, article_id);
+   } = useDataFetch(getArticle, article_id);
+
    if (!article) return pageDisplay(null, isLoading, isError);
 
    const {
@@ -38,7 +40,6 @@ function Article() {
                <p>
                   {dd} {mm} {yyyy}
                </p>
-               <p>{comment_count} comments</p>
                <VoteCounter votes={votes} id={article_id} />
 
                <br />
@@ -46,7 +47,7 @@ function Article() {
             </div>
          </section>
          <br />
-         <Comments article_id={article_id} />
+         <Comments article_id={article_id} comment_count={comment_count} />
       </>
    );
 
