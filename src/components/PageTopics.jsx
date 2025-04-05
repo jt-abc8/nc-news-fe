@@ -4,16 +4,20 @@ import { pageDisplay } from "../utils";
 import CardDisplay from "./CardDisplay";
 
 function PageTopics() {
-    const {data : {topics}, isLoading, error} = useDataFetch(getTopics);
+   const {
+      data: { topics },
+      isLoading,
+      error,
+   } = useDataFetch(getTopics);
 
-    const html = (
-        <main id="topics-page">
-            <h2>Topics</h2>
-            <CardDisplay data={{topics}}/>
-        </main>
-    )
+   const html = <CardDisplay data={{ topics }} />;
 
-    return pageDisplay(html, isLoading, error);
+   return (
+      <main id="topics-page">
+         <h2>Topics</h2>
+         {pageDisplay(html, isLoading, error)}
+      </main>
+   );
 }
 
 export default PageTopics;

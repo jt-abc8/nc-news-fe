@@ -1,13 +1,13 @@
 import { articleCards, commentCards, topicCards } from "../utils";
 import { useState, useEffect } from "react";
 
-function CardDisplay({ data, setData, page, setPage, limit}) {
+function CardDisplay({ data, setData, page, setPage, limit }) {
    const [totalPages, setTotalPages] = useState(0);
    const [cardArray, setCardArray] = useState([]);
 
    useEffect(() => {
-      setTotalPages(Math.ceil(data.total_count / limit));
-      setCardArray(cards());
+      if (setPage) setTotalPages(Math.ceil(data.total_count / limit));
+      if (data) setCardArray(cards());
    }, [data]);
 
    const updatePage = (num) => {
@@ -21,17 +21,28 @@ function CardDisplay({ data, setData, page, setPage, limit}) {
       if (data.topics) return topicCards(data);
    };
 
+   const paginate = setPage ? true : false;
    const navButton = (text, value, condition) => {
-      if (condition) {
-         return <button onClick={() => updatePage(value)}>{text}</button>;
+      if (condition & paginate) {
+         return (
+            <button className="border interactable" onClick={() => updatePage(value)}>
+               {text}
+            </button>
+         );
       }
    };
 
-return (
+   return (
       <div className="display-block">
+         <div className="nav-buttons">
+            {navButton("Next Page", 1, page < totalPages)}
+            {navButton("Previous page", -1, page > 1)}
+         </div>
          {cardArray}
-         {navButton("Previous page", -1, page > 1)}
-         {navButton("Next Page", 1, page < totalPages)}
+         <div className="nav-buttons">
+            {navButton("Next Page", 1, page < totalPages)}
+            {navButton("Previous page", -1, page > 1)}
+         </div>
       </div>
    );
 }

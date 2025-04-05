@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { patchVotes } from "../api";
+import thumbUp from "../assets/thumb-up.svg";
+import thumbDown from "../assets/thumb-down.svg";
 
 function VoteCounter({ votes, id }) {
    const [voteCount, setVoteCount] = useState(votes);
@@ -17,14 +19,20 @@ function VoteCounter({ votes, id }) {
    };
 
    return (
-      <>
-         <div className="vote-counter">
-            <p>{voteCount} votes</p>
-            <button onClick={() => vote(1)}>👍</button>
-            <button onClick={() => vote(-1)}>👎</button>
-            <p>{error ? "Something went wrong..." : null}</p>
+      <div className="vote-counter border">
+         <div>
+            <p className="vote-display">{voteCount} votes</p>
+            <button className="border upvote interactable" onClick={() => vote(1)}>
+               <img src={thumbUp} alt="Upvote" />
+            </button>
+            <button className="border downvote interactable" onClick={() => vote(-1)}>
+               <img src={thumbDown} alt="Downvote" />
+            </button>
          </div>
-      </>
+         <p className="vote-error">
+            {error ? "Something went wrong..." : null}{" "}
+         </p>
+      </div>
    );
 }
 

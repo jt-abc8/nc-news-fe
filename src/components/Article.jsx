@@ -1,9 +1,10 @@
-import { useParams } from "react-router";
+import { useParams, Link } from "react-router";
 import { getArticle } from "../api";
 import { getDate, pageDisplay } from "../utils";
 import { useDataFetch } from "../custom-hooks";
 import Comments from "./Comments";
 import VoteCounter from "./VoteCounter";
+import "../styling/article.css";
 
 function Article() {
    const { article_id } = useParams();
@@ -13,41 +14,43 @@ function Article() {
       error,
    } = useDataFetch(getArticle, article_id);
 
-   const html = () =>{
-      const {
-         article_img_url,
-         author,
-         body,
-         created_at,
-         title,
-         topic,
-         votes,
-      } = article;
-   
+   const html = () => {
+      const { article_img_url, author, body, created_at, title, topic, votes } =
+         article;
+
       const { dd, mm, yyyy } = getDate(created_at);
 
       return (
          <>
             <section id="article">
-               <img src={article_img_url} alt="" />
-               <div>
-                  <p>#{topic}</p>
+               <div id="article-img-container">
+                  <img src={article_img_url} alt="" />
+               </div>
+               <div id="article-content">
+                  <Link
+                     to={`/articles?topic=${topic}`}
+                     className="interactable border"
+                     id="topic-link"
+                  >
+                     #{topic}
+                  </Link>
                   <h2>{title}</h2>
-                  <h3>by {author}</h3>
-                  <p>
+                  <h3>by {author} </h3>
+                  <p id="article-date">
                      {dd} {mm} {yyyy}
                   </p>
-                  <VoteCounter votes={votes} id={article_id} />
-   
                   <br />
                   <p>{body}</p>
+                  <br />
                </div>
             </section>
-            <br />
+            <div id="vote-container">
+               <VoteCounter votes={votes} id={article_id} />
+            </div>
             <Comments article_id={article_id} />
          </>
       );
-   } 
+   };
 
    return pageDisplay(article ? html() : null, isLoading, error);
 }

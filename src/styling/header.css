@@ -1,0 +1,54 @@
+#header {
+   position: fixed;
+   background-color: rgb(75, 34, 34);
+   height: 104px;
+   width: 100%;
+   max-width: 1013px;
+   display: grid;
+   grid-template-areas: "user title nav";
+   border-bottom: 6px double wheat;
+   justify-content: space-evenly;
+}
+
+#site-heading {
+   grid-area: title;
+   text-align: center;
+   text-shadow: 2px 2px black;
+   line-height: 104px;
+}
+
+#navbar {
+   grid-area: nav;
+   width: 100%;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-evenly;
+
+   .border {
+      height: 32px;
+      border-radius: 30%;
+      box-shadow: 1px 1px black;
+      font-size: 0.9rem;
+      text-align: center;
+      text-shadow: 0 0;
+   }
+}
+
+.user-display {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   grid-area: user;
+   width: 72px;
+   
+   img {
+      height: 64px;
+      width: 64px;
+      border-radius: 50%;
+      box-shadow: 1px 1px black;
+   }
+   p {
+      text-align: center;
+      text-shadow: 2px 2px black;
+   }
+}

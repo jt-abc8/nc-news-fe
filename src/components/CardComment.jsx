@@ -19,7 +19,7 @@ function CardComment({ commentData, setCommentArray }) {
          return (
             <button
                onClick={handleDeleteComment}
-               className="comment-delete-btn"
+               className="comment-delete-btn border"
             >
                <img src={deleteIcon} alt="Delete comment" />
             </button>
@@ -38,16 +38,19 @@ function CardComment({ commentData, setCommentArray }) {
    };
 
    return (
-      <section className="comment-card dev-border">
-         <div className="card-text">
-            <h4>{author}</h4>
-            <h5>
-               {dd} {mm} {yyyy} {time}
-            </h5>
-            <p>{body}</p>
-            <p>{votes} votes</p>
+      <section className="comment-card border">
+         <div className="comment-heading">
+            <div>
+               <h4>{author}</h4>
+               <h5>
+                  {dd} {mm} {yyyy} {time}
+               </h5>
+            </div>
+            {deleteButton()}
          </div>
-         {deleteButton()}
+         <br/>
+         <p>{body}</p>
+         <p>{votes} votes</p>
          {isDeleting ? "Deleting..." : null}
          {isError ? "Failed to delete..." : null}
       </section>

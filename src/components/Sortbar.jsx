@@ -3,6 +3,7 @@ import { getTopics } from "../api";
 import { useDataFetch } from "../custom-hooks";
 import { pageDisplay } from "../utils";
 import { useNavigate, useSearchParams } from "react-router";
+import "../styling/sortbar.css";
 
 function Sortbar() {
    const navigate = useNavigate();
@@ -94,14 +95,16 @@ function Sortbar() {
             onChange={(event) => handleFilter(event, setOrder)}
          >
             <option value="default">--Default--</option>
-            <option value="desc">{descLabel[sort]}</option>
+            <option value="desc">
+               {descLabel[sort]}
+            </option>
             <option value="asc">{ascLabel[sort]}</option>
          </select>
       </div>
    );
 
    const html = () => (
-      <section id="sort-bar">
+      <section id="sort-bar" className="border">
          {topicFilter()}
          {sortBy}
          {orderBy}

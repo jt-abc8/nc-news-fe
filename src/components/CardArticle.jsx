@@ -1,5 +1,6 @@
 import { getDate } from "../utils";
 import { Link } from "react-router";
+import "../styling/card.css";
 
 function CardArticle({ data }) {
    const {
@@ -16,23 +17,23 @@ function CardArticle({ data }) {
 
    return (
       <Link to={`/articles/${article_id}`}>
-         <section className="article-card">
-            <div className="card-img">
-               <img src={article_img_url} alt="" />
+         <section
+            className="article-card interactable"
+            style={{ backgroundImage: `url(${article_img_url})` }}
+         >
+            <h4 className="card-title">{title}</h4>
+            <div className="card-data">
+               <h5>by {author}</h5>
+               <p>
+                  {dd} {mm} {yyyy}
+               </p>
+               <p>{comment_count} comments</p>
+               <p>{votes} votes</p>
             </div>
-            <div className="card-text">
-               <h4>{title}</h4>
-               <div>
-                  <h5>by {author}</h5>
-                  <p>
-                     {dd} {mm} {yyyy}
-                  </p>
-               </div>
-               <div>
-                  <p>#{topic}</p>
-                  <p>{comment_count} comments</p>
-                  <p>{votes} votes</p>
-               </div>
+            <div className="card-tag">
+               <p className="border">
+                  #{topic}
+               </p>
             </div>
          </section>
       </Link>

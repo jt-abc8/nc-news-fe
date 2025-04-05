@@ -1,14 +1,13 @@
 import { Link } from "react-router";
+import "../styling/card.css"
 
 export const CardTopic = ({ topic: { slug, description, img_url } }) => {
-    const img = <img src={img_url} alt={slug} />;
+   img_url = img_url === "" ? null : img_url;
 
    return (
       <Link to={`/articles?topic=${slug}`}>
-         <section className="topic-card">
-            <div className="card-img">
-               {img_url === "" ? null : img}
-            </div>
+         <section className="topic-card interactable"
+         style={img_url ? {backgroundImage: `url(${img_url})`} : {backgroundColor: "#4b2222"}}>
             <div className="card-text">
                <h3>#{slug}</h3>
                <p>{description}</p>

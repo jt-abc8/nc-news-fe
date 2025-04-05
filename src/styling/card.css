@@ -1,0 +1,56 @@
+.topic-card {
+   width: 90%;
+   max-width: 383px;
+   height: 256px;
+   margin: 16px auto;
+   border-radius: 7.5%;
+   border: 3px solid black;
+   text-shadow: 1px 1px black;
+   padding: 24px;
+}
+
+.article-card {
+   width: 90%;
+   max-width: 383px;
+   margin: 8px auto;
+   border-radius: 7.5%;
+   border: 3px solid black;
+   text-shadow: 1px 1px black;
+   padding: 16px 16px;
+   display: grid;
+   grid-template-areas:
+      "title title"
+      "data tag";
+   grid-template-columns: auto 128px;
+
+   .card-title {
+      grid-area: title;
+      margin-bottom: 8px;
+   }
+
+   .card-data {
+      grid-area: data;
+      display: flex;
+      flex-direction: column;
+      justify-content: end;
+
+      p {
+         font-size: 0.7rem;
+      }
+   }
+}
+
+.card-tag {
+   grid-area: tag;
+   display: flex;
+   flex-direction: row-reverse;
+
+   p {
+      height: 2.25rem;
+      margin-top: 20%;
+      padding-top: 2px;
+      border-radius: 30%;
+      text-shadow: 0 0;
+      box-shadow: 1px 1px black;
+   }
+}

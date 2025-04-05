@@ -11,12 +11,13 @@ function CommentForm({ setData, article_id }) {
    const [msg, setMsg] = useState(null);
    const [msgTimer, setMsgTimer] = useState(false);
 
+   const newMsg = () => {
+      if (isSubmitted) return "Comment submitted!";
+      if (isError)
+         return "Something went wrong. Check your input is valid and try again.";
+   };
+
    useEffect(() => {
-      const newMsg = () => {
-         if (isSubmitted) return "Comment submitted!";
-         if (isError)
-            return "Something went wrong. Check your input is valid and try again.";
-      };
       setMsg(newMsg());
    }, [msgTimer]);
 
@@ -70,11 +71,12 @@ function CommentForm({ setData, article_id }) {
             <label id="comment-form-label" htmlFor="comment">
                Leave a comment:
             </label>
-            <div id="comment-user-display">
-               <img src={avatar} alt="" />
+            {/* <div className="user-display">
+               <img className="border" src={avatar} alt="" />
                <p>{username}</p>
-            </div>
+            </div> */}
             <textarea
+               className="border"
                required
                id="comment"
                name="comment"
@@ -84,7 +86,7 @@ function CommentForm({ setData, article_id }) {
                onChange={handleInput}
             />
             <p id="comment-char-count">{input.length}/250</p>
-            <button>Submit</button>
+            <button className="border interactable">Submit</button>
          </form>
          <p id="comment-submit-msg">{msgTimer ? msg : null}</p>
       </>

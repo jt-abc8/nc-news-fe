@@ -1,9 +1,119 @@
 * {
    margin: 0;
    padding: 0;
+   max-width: 100vw;
+   box-sizing: border-box;
+   color: wheat;
+}
+
+body {
+   background-color: black;
+}
+
+#root {
+   margin: auto;
+   width: 100vw;
+   height: auto;
+   max-width: 1024px;
+   min-width: 320px;
+   min-height: 100vh;
+   background-color: firebrick;
+   font-family: Faculty Glyphic;
+   text-shadow: 1px 1px rgb(75, 34, 34);
+}
+
+main {
+   padding-top: 104px;
+}
+
+h2 {
+   text-align: center;
+   text-shadow: 2px 2px rgb(75, 34, 34);
+   padding: 8px;
+}
+
+h5 {
+   font-size: 0.9rem;
+}
+
+p {
+   font-size: 0.8rem;
+}
+
+a {
+   text-decoration: none;
+}
+
+.interactable:hover {
+   scale: 1.05;
+}
+
+.interactable:active {
+   scale: 0.95;
+}
+
+.border {
+   display: inline;
+   border: 6px double rgb(75, 34, 34);
+   color: firebrick;
+   background-color: wheat;
+   text-shadow: 1px 1px rgb(75, 34, 34);
+   padding: 0 4px 2px 4px;
+   box-shadow: 3px 3px #4b2222;
+}
+
+.nav-buttons {
+   display: flex;
+   justify-content: space-between;
+   width: 90%;
+   max-width: 512px;
+   margin: auto;
+   flex-direction: row-reverse;
+
+   .border {
+      text-shadow: 0 0 ;
+      font-family: Faculty Glyphic;
+   }
+}
+
+.display-block {
+   max-width: 383px;
+   margin: auto;
+}
+
+.display-block button {
+   padding: 8px;
+   border-radius: 30%;
+}
+
+@media (width >= 1024px) {
+   #root {
+      border-left: 6px solid rgb(75, 34, 34);
+      border-right: 6px solid rgb(75, 34, 34);
+   }
+}
+/* * {
+   margin: 0;
+   padding: 0;
    box-sizing: border-box;
    max-width: 512px;
    margin: auto;
+   font-family: "Faculty Glyphic";
+   color: wheat;
+   background-color: firebrick;
+   text-shadow: 1px 1px black;
+   text-size-adjust: 90%;
+
+   p {
+      text-shadow: 0px 0px;
+      color: black;
+   }
+
+   img {
+      border: 8px solid chocolate;
+      border-radius: 25%;
+      border-style: double;
+   }
 }
 
 .dev-border {
@@ -50,7 +160,6 @@
 
    img {
       width: 120px;
-      padding-left: 4px;
    }
 }
 
@@ -206,4 +315,4 @@ h2 {
       font-weight: bold;
       border: 1px solid black;
    }
-}
+} */

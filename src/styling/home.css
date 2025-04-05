@@ -1,0 +1,21 @@
+#home-page {
+    display: flex;
+    flex-direction: column;
+
+    h3 {
+        text-shadow: 2px 2px rgb(75, 34, 34);
+        margin: 0 auto;
+        width: auto;
+        height: 32px;
+        margin-top: 32px;
+    }
+}
+
+.see-all {
+    width: 148px;
+    text-align: center;
+    margin: 8px auto;
+    padding: 16px 0;
+    border-radius: 25%;
+    text-shadow: 0 0;
+}
