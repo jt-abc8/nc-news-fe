@@ -3,12 +3,11 @@
 ## Project Summary
 NC News is a Reddit-style social media/blogging site. It was built with the React library and interacts with a RESTful API to access its back-end.
 
-The wonderful (and informative) world of NC News can be found right here:
-[NC News](https://nc-news-frontend-jt.netlify.app/)
+[NC News](https://nc-news-frontend-jt.netlify.app/) - the wonderful (and informative) NC News site!
 
-The GitHub repository for the API is here: [GitHub repository](https://github.com/jt-abc8/nc-news-back-end)
+[API GitHub repository](https://github.com/jt-abc8/nc-news-back-end) - GitHub repository for the NC News API
 
-A hosted version of the API can be found here: [Hosted version](https://nc-news-i5we.onrender.com/api)
+[API hosted version](https://nc-news-i5we.onrender.com/api) - the hosted version of the NC News API
 
 ## Running a local version
 ### 1. Clone repository
