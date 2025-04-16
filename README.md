@@ -7,6 +7,7 @@ The wonderful (and informative) world of NC News can be found right here:
 [NC News](https://nc-news-frontend-jt.netlify.app/)
 
 The GitHub repository for the API is here: [GitHub repository](https://github.com/jt-abc8/nc-news-back-end)
+
 A hosted version of the API can be found here: [Hosted version](https://nc-news-i5we.onrender.com/api)
 
 ## Running a local version
