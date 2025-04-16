@@ -6,9 +6,8 @@ NC News is a Reddit-style social media/blogging site. It was built with the Reac
 The wonderful (and informative) world of NC News can be found right here:
 [NC News](https://nc-news-frontend-jt.netlify.app/)
 
-The API can be found here:
-[GitHub repository](https://github.com/jt-abc8/nc-news-back-end)
-[Hosted version](https://nc-news-i5we.onrender.com/api)
+The GitHub repository for the API is here: [GitHub repository](https://github.com/jt-abc8/nc-news-back-end)
+A hosted version of the API can be found here: [Hosted version](https://nc-news-i5we.onrender.com/api)
 
 ## Running a local version
 ### 1. Clone repository
